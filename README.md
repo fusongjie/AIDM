@@ -2,7 +2,7 @@
 
 AIDM 是一款 Windows 下载管理器，支持 HTTP/HTTPS、FTP、BitTorrent、eD2k 等多协议下载，
 提供多连接分段、断点续传、队列调度、限速代理与浏览器接管。完全免费干净，做一个安安静静的下载器。
-
+<img width="1539" height="1065" alt="ui" src="https://github.com/user-attachments/assets/e69e047a-3abe-46be-92d8-e8443c2eb830" />
 ## 功能
 
 **下载核心**
