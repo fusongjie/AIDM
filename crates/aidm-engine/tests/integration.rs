@@ -439,8 +439,20 @@ fn temp_env_conns(tag: &str, max_conns: Option<i64>) -> Env {
     }
 }
 
+/// 等待窗口的可缩放倍数。CI 的 2 vCPU runner 上，慢速滴灌 + 并行用例会让
+/// 状态推进明显变慢；用环境变量放大等待预算，避免把「环境慢」误报成功能回归。
+/// 本地默认 1.0（行为不变），CI 设 3.0。
+fn timeout_scale() -> f64 {
+    std::env::var("AIDM_TEST_TIMEOUT_SCALE")
+        .ok()
+        .and_then(|v| v.parse::<f64>().ok())
+        .filter(|v| *v >= 1.0)
+        .unwrap_or(1.0)
+}
+
 fn until(timeout: Duration, mut pred: impl FnMut() -> bool) -> bool {
     let start = std::time::Instant::now();
+    let timeout = timeout.mul_f64(timeout_scale());
     while start.elapsed() < timeout {
         if pred() {
             return true;

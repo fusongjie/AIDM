@@ -214,6 +214,12 @@ fn minisign_signature_text(raw: &str) -> Result<String, String> {
 
 /// 验证清单签名；缺失、格式错误或不匹配都拒绝。
 pub fn verify_manifest_signature(pkg: &AvailableUpdate) -> Result<(), String> {
+    // 仅调试构建可用的测试旁路：集成测试的清单是动态生成的，无法预置发布私钥签名。
+    // release 构建（含发布流水线的签名自检）永远强制验签。
+    #[cfg(debug_assertions)]
+    if std::env::var("AIDM_UPDATE_ALLOW_UNSIGNED").ok().as_deref() == Some("1") {
+        return Ok(());
+    }
     let raw = pkg
         .signature
         .as_deref()

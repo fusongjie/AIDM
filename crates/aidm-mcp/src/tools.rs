@@ -420,6 +420,10 @@ pub const HIDDEN_OPS: &[(&str, &str)] = &[
     ("site_logins_set", "B"),
     ("subscribe", "C"),
     ("system_proxy_get", "C"),
+    // 统一视图分页快照：只读，但属于引擎内部诊断面，不默认暴露给 MCP。
+    ("task_snapshot", "C"),
+    // 清空任务日志：写操作，不暴露。
+    ("task_events_clear", "A"),
     ("update_check", "B"),
     ("update_download_apply", "B"),
 ];
@@ -806,7 +810,7 @@ mod tests {
             "新增/删除 op 后必须同步 TOOLS 或 HIDDEN_OPS（R-MCPS-09）"
         );
         assert_eq!(TOOLS.len(), 24, "暴露集 24 个（含复合工具 aidm_wait）");
-        assert_eq!(HIDDEN_OPS.len(), 24, "不暴露表固定 24 个");
+        assert_eq!(HIDDEN_OPS.len(), 26, "不暴露表固定 26 个");
     }
 
     #[test]

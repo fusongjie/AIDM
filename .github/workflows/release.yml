@@ -16,6 +16,11 @@ on:
 permissions:
   contents: write
 
+# 同一 tag 重复触发时串行执行，不自动取消（避免把一个正在上传的 Release 打断）。
+concurrency:
+  group: aidm-release-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   release:
     name: Build & Publish

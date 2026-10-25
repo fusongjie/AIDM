@@ -191,7 +191,17 @@ fn ed2k_without_part_observation_does_not_fake_coverage() {
         view.progress.stored_unique_bytes, "0",
         "没有 part 事实时不得把聚合字节数铺成从文件头开始的覆盖"
     );
-    assert!(view.slices.is_empty(), "没有 part 事实就没有可展示的切片");
+    // 无 part 事实时仍保留切片条目（由 total + budget 确定性推导，暂停/重启后同一 ID），
+    // 避免详情面板“暂停一下整段消失”；但不得附带任何伪造的覆盖。
+    assert!(
+        !view.slices.is_empty(),
+        "无 part 事实时应保留占位切片，只把覆盖留空"
+    );
+    for slice in &view.slices {
+        assert_eq!(slice.progress.stored_unique_bytes, "0");
+        assert_eq!(slice.progress.verified_unique_bytes, "0");
+        assert_eq!(slice.state, "pending");
+    }
     assert_eq!(
         view.resources[0].verification, "native_block",
         "校验策略仍如实标注，不因无观测而降低"

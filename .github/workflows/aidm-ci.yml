@@ -13,6 +13,11 @@ on:
     branches:
       - main
 
+# 同一分支连续 push 时取消旧运行，避免白白烧分钟数。
+concurrency:
+  group: aidm-ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   windows:
     name: Windows
@@ -37,6 +42,9 @@ jobs:
         run: cargo build --workspace --locked
 
       - name: Test workspace
+        env:
+          # CI 的 2 vCPU runner 上慢速滴灌与并行用例更慢；测试内的等待预算按此放大。
+          AIDM_TEST_TIMEOUT_SCALE: "3"
         run: cargo test --workspace --locked
 
       - name: Extension unit tests

@@ -67,7 +67,7 @@ fn every_contract_op_is_classified() {
         .chain(tools::HIDDEN_OPS.iter().map(|(op, _)| op.to_string()))
         .collect();
     let mut contract = contract_ops();
-    assert_eq!(contract.len(), 47, "契约变体数变了：{contract:?}");
+    assert_eq!(contract.len(), 49, "契约变体数变了：{contract:?}");
 
     classified.sort();
     classified.dedup();

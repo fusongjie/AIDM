@@ -43,6 +43,18 @@ fn spawn_engine_process(data_home: &Path) -> Child {
         .expect("spawn engine")
 }
 
+
+/// 等待预算缩放：CI 的 2 vCPU runner 上启动进程/握手更慢，用环境变量放大。
+/// 本地默认 1.0（行为不变），CI 设 3.0。
+fn budget(d: Duration) -> Duration {
+    let scale = std::env::var("AIDM_TEST_TIMEOUT_SCALE")
+        .ok()
+        .and_then(|v| v.parse::<f64>().ok())
+        .filter(|v| *v >= 1.0)
+        .unwrap_or(1.0);
+    d.mul_f64(scale)
+}
+
 fn wait_instance_lock_free(data_dir: &Path, timeout: Duration) {
     let start = Instant::now();
     while start.elapsed() < timeout {
@@ -62,7 +74,7 @@ fn wait_task_status(port: u16, id: u64, timeout: Duration) -> EngineResponse {
     let start = Instant::now();
     let mut last: Option<Result<EngineResponse, String>> = None;
     while start.elapsed() < timeout {
-        match engine_roundtrip(port, &EngineRequest::Status { id }, Duration::from_secs(15)) {
+        match engine_roundtrip(port, &EngineRequest::Status { id }, budget(Duration::from_secs(15))) {
             Ok(st) if st.ok && st.task.is_some() => return st,
             other => last = Some(other),
         }
@@ -191,8 +203,8 @@ fn nmh_roundtrip(host: &Path, data_home: &Path, json: &str) -> ExtResponse {
 #[test]
 fn engine_and_native_host_e2e() {
     let mut env = Isolated::spawn_engine();
-    let port = env.wait_port(Duration::from_secs(8));
-    let ping = engine_roundtrip(port, &EngineRequest::Ping, Duration::from_secs(15)).unwrap();
+    let port = env.wait_port(budget(Duration::from_secs(8)));
+    let ping = engine_roundtrip(port, &EngineRequest::Ping, budget(Duration::from_secs(15))).unwrap();
     assert!(ping.ok);
 
     let host = ensure_host_bin();
@@ -226,7 +238,7 @@ fn engine_and_native_host_e2e() {
 #[test]
 fn engine_process_crash_restart_requeues() {
     let mut env = Isolated::spawn_engine();
-    let port = env.wait_port(Duration::from_secs(8));
+    let port = env.wait_port(budget(Duration::from_secs(8)));
     let add = engine_roundtrip(
         port,
         &EngineRequest::Add {
@@ -243,7 +255,7 @@ fn engine_process_crash_restart_requeues() {
             speed_limit_kbps: 0,
             start: Some("now".into()),
         },
-        Duration::from_secs(15),
+        budget(Duration::from_secs(15)),
     )
     .unwrap();
     assert!(add.ok);
@@ -254,11 +266,11 @@ fn engine_process_crash_restart_requeues() {
     env.child.wait().ok();
     // 避免 wait_port 误连已死进程留下的端口文件。
     let _ = std::fs::remove_file(env.data_dir().join(PORT_FILE));
-    wait_instance_lock_free(&env.data_dir(), Duration::from_secs(5));
+    wait_instance_lock_free(&env.data_dir(), budget(Duration::from_secs(5)));
 
     let db = env.data_dir().join("db.sqlite");
     let start = Instant::now();
-    while start.elapsed() < Duration::from_secs(3) {
+    while start.elapsed() < budget(Duration::from_secs(3)) {
         if db.exists() {
             break;
         }
@@ -279,8 +291,8 @@ fn engine_process_crash_restart_requeues() {
     }
 
     env.child = spawn_engine_process(&env.dir);
-    let port = env.wait_port(Duration::from_secs(8));
-    let st = wait_task_status(port, id, Duration::from_secs(5));
+    let port = env.wait_port(budget(Duration::from_secs(8)));
+    let st = wait_task_status(port, id, budget(Duration::from_secs(5)));
     assert!(st.ok, "status after crash+restart must succeed: {st:?}");
     assert!(
         st.task.is_some(),

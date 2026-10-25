@@ -116,6 +116,9 @@ struct Env {
 }
 
 fn temp_env(_tag: &str) -> Env {
+    // 集成测试的清单是动态生成的，没有发布私钥；debug 构建下允许跳过验签。
+    // release 构建不受影响（发布流水线的签名自检仍强制生效）。
+    std::env::set_var("AIDM_UPDATE_ALLOW_UNSIGNED", "1");
     let tmp = common::tempdir("upd");
     let dir = tmp.path().to_path_buf();
     let db = open_db(&dir.join("db.sqlite")).unwrap();
