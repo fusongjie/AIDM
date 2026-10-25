@@ -1,0 +1,57 @@
+{
+  "manifest_version": 3,
+  "name": "AIDM",
+  "version": "0.2.0",
+  "description": "将链接与媒体交给 AIDM 下载管理器（Chrome / Edge）。",
+  "author": "小熊宋",
+  "homepage_url": "https://github.com/fusongjie/AIDM",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4Ka+bhmjIEHKZu7ZlR98Gxg9zhsCUAf0EnOp31VousgdjX4zUB5vDDfYhFCqIrPZoR3eUa4Q46war/u4Vd1tflvHE8DbLjYqtmaNIocN3CmPcyldW44I9vOTM5GSzn5f8L6GuX+mHcut/OuB3um0+2XuhQRhj9S4fhdd0Zof6tWbEQ5zdkof88lPpuN3eZe3tzzXPeYixI9xY0XBorgBsacxMbj+rO4f5wdmVT7WPitptxLFEPjDNcWF5meh3ulg+JDdvSaGbOVUYSkT6tTMQhn0MnluFoFMptxg4zvuNYejymCMuaLEINIa2ZiQS+35K6dTFC1cqeDAfpvdQlzlUwIDAQAB",
+  "action": {
+    "default_title": "AIDM",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["lib/logic.js", "lib/hotkey_state.js", "lib/panel.js", "lib/page_bridge.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    },
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["page_hook.js"],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": false
+    }
+  ],
+  "permissions": [
+    "contextMenus",
+    "nativeMessaging",
+    "downloads",
+    "cookies",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/icon16.png", "icons/icon48.png", "icons/icon128.png"],
+      "matches": ["http://*/*", "https://*/*"]
+    }
+  ],
+  "minimum_chrome_version": "111"
+}

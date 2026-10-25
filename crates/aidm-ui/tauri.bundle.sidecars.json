@@ -1,0 +1,5 @@
+{
+  "bundle": {
+    "externalBin": ["sidecars/aidm-engine", "sidecars/aidm-ext-host"]
+  }
+}

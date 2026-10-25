@@ -1,0 +1,33 @@
+[package]
+name = "aidm-ui"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+keywords = ["tauri", "download-manager", "gui", "desktop", "windows"]
+categories = ["gui"]
+description = "AIDM desktop UI (Tauri 2): list/settings/tray/notify, zero HTTP IO (engine-owned downloads)"
+
+[build-dependencies]
+tauri-build.workspace = true
+
+[dependencies]
+aidm-core = { path = "../aidm-core" }
+aidm-ipc = { path = "../aidm-ipc" }
+tauri.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+log.workspace = true
+rfd = "0.15"
+open = "5"
+tauri-plugin-notification = "2"
+
+# 开机自启只写当前用户的 Run 键（`general.start_with_windows`）。
+# 版本与 aidm-core 保持一致，避免同一个 crate 出现两份实现。
+[target.'cfg(windows)'.dependencies]
+winreg = "0.52"
+# 内置提示音：代码合成 WAV 后用 winmm PlaySoundW 播放。
+windows-sys = { version = "0.59", features = ["Win32_Foundation", "Win32_Media_Audio"] }

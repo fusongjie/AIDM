@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>AIDM</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <h1>AIDM</h1>
+  <div class="status">
+    <div>引擎：<strong id="engine">检测中…</strong></div>
+    <div>活跃任务：<strong id="active">—</strong></div>
+    <div>按住检测：<strong id="hotkey">检测中…</strong></div>
+  </div>
+  <p id="msg" class="msg" hidden></p>
+  <button id="collect" type="button">收集当前页面链接</button>
+  <p class="hint">右键链接或音视频可「用 AIDM 下载」。需先打开 AIDM 主程序。</p>
+  <script src="popup.js"></script>
+</body>
+</html>

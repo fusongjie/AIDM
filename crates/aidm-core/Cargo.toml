@@ -1,0 +1,67 @@
+[package]
+name = "aidm-core"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+keywords = ["download-manager", "sqlite", "settings", "scheduler", "segmentation"]
+categories = ["database", "config", "parsing"]
+description = "AIDM core: SQLite persistence, settings, paths, logging bootstrap"
+
+[dependencies]
+rusqlite.workspace = true
+# 统一下载模型的持久化类型（Span / ActionParams / ID）需要序列化。
+serde.workspace = true
+serde_json.workspace = true
+log.workspace = true
+# 结构化日志底座（obs 模块）：tracing 产出事件、tracing-subscriber 输出 JSON 行。
+tracing.workspace = true
+tracing-subscriber.workspace = true
+tracing-log.workspace = true
+# 类型化错误与原因链（error 模块的类型化层）。
+thiserror.workspace = true
+# 诊断包（diag 模块）：zip 条目用 deflate 压缩。
+flate2 = "1"
+# MPEG-DASH 的 MPD 解析（`dash` 模块）。HLS 的 m3u8 **不用**它 —— 那是纯文本格式，
+# 手写更小（见 `src/hls.rs`）；MPD 是真 XML，命名空间/转义/嵌套的正确解析不该自己写。
+quick-xml.workspace = true
+dirs.workspace = true
+# 仅 secret.rs 的小输入密钥派生用（几十字节，不关心吞吐）。
+sha2 = "0.10"
+# 文件 / 流式 SHA-256 走 ring：它带 SHA-NI 汇编（运行时探测，老 CPU 自动回退）。
+# 不走 sha2 的 `asm` feature —— 那个要 GAS 汇编器，MSVC 的 cl.exe 无法汇编 .S 文件；
+# 而 sha2 纯软件实现实测只有 ~80 MB/s，ring 与系统 certutil 同为 GB/s 级。
+ring = "0.17"
+chrono = { version = "=0.4.45", default-features = false, features = ["clock", "std"] }
+# eD2k（电驴）文件哈希用 MD4 部件哈希树。MD4 已被密码学淘汰，但 eD2k 协议
+# 按定义就要求 MD4（RFC 1320），这里只用于协议兼容与完整性校验。
+md4 = "0.11"
+# HTTP Digest 认证（RFC 7616）的 MD5 / MD5-sess 算法；与 aidm-engine 共用同一版本。
+md5 = "0.7"
+
+[target.'cfg(unix)'.dependencies]
+libc = "=0.2.190"
+
+[target.'cfg(windows)'.dependencies]
+winreg = "0.52"
+windows-sys = { version = "0.59", features = [
+    "Win32_Foundation",
+    "Win32_Networking_WinHttp",
+    "Win32_Security_Cryptography",
+    "Win32_System_Memory",
+    # 诊断包要报内存总量/可用量（GlobalMemoryStatusEx 属于 SystemInformation）。
+    "Win32_System_SystemInformation",
+    "Win32_Storage_FileSystem",
+    "Win32_System_IO",
+    "Win32_Globalization",
+] }
+
+[dev-dependencies]
+# 测试工作目录一律用 `tempfile::tempdir()`：绝对路径 + Drop 自动清理，
+# 不写相对路径、不污染真实 %LOCALAPPDATA%。
+tempfile = "3"
+# 交叉验证：用独立实现（ed2k crate）核对我们的 eD2k 哈希树，避免自证自洽。
+ed2k = "1.0"

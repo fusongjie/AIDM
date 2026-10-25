@@ -1,0 +1,47 @@
+{
+  "synthetic": true,
+  "network_requests": 0,
+  "architecture": "ia32",
+  "vectors": [
+    {
+      "kind": "data",
+      "protocol": 59,
+      "command": 18,
+      "encoder_rva": "0x4d570",
+      "body_hex": "d2042e1644332211f0ffffff214365870000100016000000785634124149444d20646966666572656e7469616c2064617461"
+    },
+    {
+      "kind": "basic_ack",
+      "protocol": 59,
+      "command": 9,
+      "encoder_rva": "0x4d570",
+      "body_hex": "d2042e1644332211f0ffffff214365870000100000000000"
+    },
+    {
+      "kind": "data",
+      "protocol": 60,
+      "command": 18,
+      "encoder_rva": "0x4d570",
+      "body_hex": "d2042e1644332211f0ffffff2143658700001000160000007856341240302010807060504149444d20646966666572656e7469616c2064617461"
+    },
+    {
+      "kind": "advanced_ack",
+      "protocol": 59,
+      "command": 17,
+      "encoder_rva": "0x4dd00",
+      "body_hex": "2e16d204443322110000100040302010f0ffffff7856341200563412090000008501"
+    },
+    {
+      "kind": "syn",
+      "protocol": 59,
+      "command": 6,
+      "encoder_rva": "0x4ccd0",
+      "body_hex": "00000000d2042e16cdd72d0bf0ffffff00000000000010000000"
+    }
+  ],
+  "peer_hash": {
+    "identity": "0123456789ABCDNM",
+    "value": 187553741,
+    "rva": "0x41210"
+  }
+}

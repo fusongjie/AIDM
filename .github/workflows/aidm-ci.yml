@@ -1,0 +1,86 @@
+# AIDM workspace CI (Windows).
+# Tauri UI frontend is static (`crates/aidm-ui/ui`); no Node/npm build.
+# Windows tauri-build needs `crates/aidm-ui/icons/icon.ico` (checked in).
+# 1GiB offline check (`scripts/verify_1gb.sh`) is a local-only script (not uploaded).
+# Stress (`--ignored` / `AIDM_STRESS`) is opt-in and not run here.
+name: AIDM CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  windows:
+    name: Windows
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: .
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install stable Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Rust
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: .
+          prefix-key: aidm-win
+
+      - name: Build workspace
+        run: cargo build --workspace --locked
+
+      - name: Test workspace
+        run: cargo test --workspace --locked
+
+      - name: Extension unit tests
+        run: node --test extension/test/logic.test.js
+
+      - name: UI logic, e2e (mock engine) and 10k bench
+        run: node --test crates/aidm-ui/ui/test/errors.test.js crates/aidm-ui/ui/test/polish.test.js crates/aidm-ui/ui/test/update.test.js crates/aidm-ui/ui/test/e2e.test.js crates/aidm-ui/ui/test/bench-10k.test.js crates/aidm-ui/ui/test/settings_form.test.js crates/aidm-ui/ui/test/settings_wiring.test.js crates/aidm-ui/ui/test/app_scope.test.js crates/aidm-ui/ui/test/clipboard.test.js crates/aidm-ui/ui/test/interactions.test.js
+
+      - name: Package MV3 extension zip
+        shell: pwsh
+        run: |
+          if (Test-Path aidm-extension.zip) { Remove-Item aidm-extension.zip }
+          Compress-Archive -Path extension\* -DestinationPath aidm-extension.zip -Force
+
+      - name: Upload MV3 extension artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aidm-extension
+          path: aidm-extension.zip
+
+      - name: Install Tauri CLI
+        run: npm install -g @tauri-apps/cli@2
+        working-directory: .
+
+      - name: Build release binaries
+        run: cargo build --workspace --locked --release
+
+      - name: Stage sidecar binaries
+        shell: pwsh
+        run: |
+          $triple = (rustc -vV | Select-String '^host:').ToString().Split(' ')[1]
+          Copy-Item "target/release/aidm-engine.exe" "crates/aidm-ui/sidecars/aidm-engine-$triple.exe" -Force
+          Copy-Item "target/release/aidm-ext-host.exe" "crates/aidm-ui/sidecars/aidm-ext-host-$triple.exe" -Force
+
+      - name: Bundle MSI (unsigned)
+        working-directory: crates/aidm-ui
+        shell: pwsh
+        run: tauri build --bundles msi --ci --config tauri.bundle.sidecars.json
+
+      # 签名脚本按上传边界只留本机；需要签名的发布请在本地执行 scripts/sign_windows.ps1。
+
+      - name: Upload MSI artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aidm-msi
+          path: target/release/bundle/msi/*.msi
+          if-no-files-found: error

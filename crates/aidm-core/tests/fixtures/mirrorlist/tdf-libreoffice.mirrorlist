@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Mirror List</title>
+  <link type="text/css" rel="stylesheet" href="/mirrorbrain.css" />
+</head>
+
+<body>
+<div id="mirrorbrain-details">
+  <h2>Mirrors for <a href="/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a></h2>
+<div id="mirrorbrain-fileinfo">
+<h3>File information</h3>
+<ul>
+  <li><span class="mirrorbrain-label">Filename:</span> LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</li>
+  <li><span class="mirrorbrain-label">Path:</span> /libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</li>
+  <li><span class="mirrorbrain-label">Size:</span> 210M (219791834 bytes)</li>
+  <li><span class="mirrorbrain-label">Last modified:</span> Thu, 08 Oct 2026 01:54:23 GMT (Unix time: 1791424463)</li>
+  <li><span class="mirrorbrain-label"><a href="/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz.sha256">SHA-256 Hash</a>:</span> <tt>30903df3b9f61360d9660cd707de48cd2831469114492a5008ed58a0ac77d044</tt></li>
+  <li><span class="mirrorbrain-label"><a href="/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz.sha1">SHA-1 Hash</a>:</span> <tt>33e7978a432f876987ef9feabb5986d4aa9bfe7e</tt></li>
+  <li><span class="mirrorbrain-label"><a href="/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz.md5">MD5 Hash</a>:</span> <tt>b057e6d049bd1844133f91818f4a3b45</tt></li>
+  <li><span class="mirrorbrain-label"><a href="/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz.btih">BitTorrent Information Hash</a>:</span> <tt>759f2735d4ce5656f410842bfcd8d4b1675867f8</tt></li>
+  <li>PGP signature <a href="/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz.asc">available</a> </li>
+</ul>
+<p><a href="/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz" class="mirrorbrain-btn">Download file from preferred mirror</a></p>
+</div>
+
+<div id="mirrorbrain-links">
+<h3>Reliable downloads</h3>
+<div class="mirrorbrain-links-grp">
+<h4>Metalink</h4>
+<ul>
+  <li><a href="/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz.meta4">/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz.meta4</a> (IETF Metalink)</li>
+  <li><a href="/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz.metalink">/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz.metalink</a> (old (v3) Metalink)</li>
+</ul>
+</div>
+<div class="mirrorbrain-links-grp">
+<h4>P2P links</h4>
+<ul>
+  <li><a href="/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz.torrent">/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz.torrent</a> (BitTorrent)</li>
+  <li><a href="/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz.magnet">/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz.magnet</a> (Magnet)</li>
+</ul>
+</div>
+<div class="mirrorbrain-links-grp">
+<h4>Zsync links</h4>
+<ul>
+  <li><a href="/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz.zsync">/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz.zsync</a></li>
+</ul>
+</div>
+</div>
+
+<div id="mirrorbrain-mirrors">
+<h3>Mirrors</h3>
+<p>List of best mirrors for IP address 223.93.7.210, located in China (CN), network 223.93.0.0/21 (autonomous system 56041).</p>
+
+<div class="mirrorbrain-mirrors-grp">
+<h4>Found 3 mirrors which handle this country (CN)</h4>
+<ul>
+ <li><a href="https://mirrors.nju.edu.cn/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirrors.nju.edu.cn/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (cn, prio 100)</li>
+ <li><a href="https://mirrors.tuna.tsinghua.edu.cn/libreoffice/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirrors.tuna.tsinghua.edu.cn/libreoffice/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (cn, prio 100)</li>
+ <li><a href="https://mirrors.bfsu.edu.cn/libreoffice/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirrors.bfsu.edu.cn/libreoffice/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (cn, prio 100)</li>
+</ul>
+</div>
+
+<div class="mirrorbrain-mirrors-grp">
+<h4>Found 13 mirrors in other countries, but same continent (AS)</h4>
+<ul>
+  <li><a href="https://mirror.freedif.org/TDF/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.freedif.org/TDF/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (sg, prio 100)</li>
+  <li><a href="https://free.nchc.org.tw/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://free.nchc.org.tw/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (tw, prio 100)</li>
+  <li><a href="https://mirror.twds.com.tw/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.twds.com.tw/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (tw, prio 100)</li>
+  <li><a href="https://ftp.yz.yamagata-u.ac.jp/pub/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://ftp.yz.yamagata-u.ac.jp/pub/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (jp, prio 100)</li>
+  <li><a href="https://mirror.kumi.systems/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.kumi.systems/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (in, prio 100)</li>
+  <li><a href="https://mirror.maeen.sa/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.maeen.sa/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (sa, prio 100)</li>
+  <li><a href="https://ftp.kaist.ac.kr/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://ftp.kaist.ac.kr/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (kr, prio 100)</li>
+  <li><a href="https://mirror.aria-on-the-planet.es/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.aria-on-the-planet.es/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (jp, prio 100)</li>
+  <li><a href="https://mirror.cyberbits.asia/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.cyberbits.asia/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (th, prio 90)</li>
+  <li><a href="https://buaya.klas.or.id/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://buaya.klas.or.id/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (id, prio 100)</li>
+  <li><a href="https://repo.usk.ac.id/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://repo.usk.ac.id/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (id, prio 100)</li>
+  <li><a href="https://mirrors.in.sahilister.net/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirrors.in.sahilister.net/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (in, prio 80)</li>
+  <li><a href="https://mirror-hk.koddos.net/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror-hk.koddos.net/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (hk, prio 100)</li>
+</ul>
+</div>
+
+<div class="mirrorbrain-mirrors-grp">
+<h4>Found 59 mirrors in other parts of the world</h4>
+<ul>
+  <li><a href="https://tdf.mirror.globo.tech/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://tdf.mirror.globo.tech/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (ca, prio 100)</li>
+  <li><a href="https://mirror.aarnet.edu.au/pub/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.aarnet.edu.au/pub/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (au, prio 100)</li>
+  <li><a href="https://ftp.lysator.liu.se/pub/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://ftp.lysator.liu.se/pub/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (se, prio 100)</li>
+  <li><a href="https://mirror.ueb.edu.ec/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.ueb.edu.ec/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (ec, prio 100)</li>
+  <li><a href="https://mirror.dkm.cz/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.dkm.cz/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (cz, prio 100)</li>
+  <li><a href="https://mirror.fcix.net/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.fcix.net/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (us, prio 100)</li>
+  <li><a href="https://mirror.clarkson.edu/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.clarkson.edu/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (us, prio 100)</li>
+  <li><a href="https://mirrors.dotsrc.org/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirrors.dotsrc.org/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (dk, prio 100)</li>
+  <li><a href="https://mirror.plusline.net/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.plusline.net/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (de, prio 100)</li>
+  <li><a href="https://www.nic.funet.fi/pub/mirrors/documentfoundation.org/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://www.nic.funet.fi/pub/mirrors/documentfoundation.org/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (fi, prio 100)</li>
+  <li><a href="https://miroir.univ-lorraine.fr/documentfoundation/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://miroir.univ-lorraine.fr/documentfoundation/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (fr, prio 100)</li>
+  <li><a href="https://tdf.mirror.rafal.ca/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://tdf.mirror.rafal.ca/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (ca, prio 100)</li>
+  <li><a href="https://southfront.mm.fcix.net/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://southfront.mm.fcix.net/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (us, prio 80)</li>
+  <li><a href="https://mirror.xenyth.net/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.xenyth.net/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (ca, prio 100)</li>
+  <li><a href="https://mirrors.iu13.net/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirrors.iu13.net/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (us, prio 100)</li>
+  <li><a href="https://mirror1.hs-esslingen.de/pub/Mirrors/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror1.hs-esslingen.de/pub/Mirrors/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (de, prio 100)</li>
+  <li><a href="https://www.mirrorservice.org/sites/download.documentfoundation.org/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://www.mirrorservice.org/sites/download.documentfoundation.org/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (gb, prio 100)</li>
+  <li><a href="https://tdf.mirror.garr.it/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://tdf.mirror.garr.it/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (it, prio 100)</li>
+  <li><a href="https://tdf.jensgutermuth.de/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://tdf.jensgutermuth.de/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (au, prio 80)</li>
+  <li><a href="https://ftp.tu-chemnitz.de/pub/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://ftp.tu-chemnitz.de/pub/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (de, prio 100)</li>
+  <li><a href="https://mirror.raiolanetworks.com/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.raiolanetworks.com/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (es, prio 100)</li>
+  <li><a href="https://mirror.unlogisch.ch/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.unlogisch.ch/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (de, prio 30)</li>
+  <li><a href="https://mirrors.neterra.net/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirrors.neterra.net/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (bg, prio 100)</li>
+  <li><a href="https://ftp.fau.de/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://ftp.fau.de/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (de, prio 100)</li>
+  <li><a href="https://ftp.osuosl.org/pub/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://ftp.osuosl.org/pub/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (us, prio 100)</li>
+  <li><a href="https://espejito.fder.edu.uy/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://espejito.fder.edu.uy/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (uy, prio 100)</li>
+  <li><a href="https://libreoffice.mirror.garr.it/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://libreoffice.mirror.garr.it/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (it, prio 100)</li>
+  <li><a href="https://tdf.elhacker.net/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://tdf.elhacker.net/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (es, prio 90)</li>
+  <li><a href="https://ftp.gwdg.de/pub/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://ftp.gwdg.de/pub/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (de, prio 150)</li>
+  <li><a href="https://mirrors.ucr.ac.cr/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirrors.ucr.ac.cr/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (cr, prio 100)</li>
+  <li><a href="https://tdf.mirror.liteserver.nl/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://tdf.mirror.liteserver.nl/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (nl, prio 100)</li>
+  <li><a href="https://mirror.bahnhof.net/pub/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.bahnhof.net/pub/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (se, prio 100)</li>
+  <li><a href="https://mirrors.up.pt/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirrors.up.pt/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (pt, prio 100)</li>
+  <li><a href="https://mirror.lnx.sk/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.lnx.sk/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (sk, prio 100)</li>
+  <li><a href="https://mirrors.middlendian.com/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirrors.middlendian.com/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (au, prio 100)</li>
+  <li><a href="https://mirror.accum.se/mirror/documentfoundation.org/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.accum.se/mirror/documentfoundation.org/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (se, prio 100)</li>
+  <li><a href="https://mirror.irq1.org/pub/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.irq1.org/pub/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (de, prio 100)</li>
+  <li><a href="https://mirror.aptus.co.tz/pub/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.aptus.co.tz/pub/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (tz, prio 100)</li>
+  <li><a href="https://ftp.snt.utwente.nl/pub/software/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://ftp.snt.utwente.nl/pub/software/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (nl, prio 100)</li>
+  <li><a href="https://mirrors.ukfast.co.uk/sites/documentfoundation.org/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirrors.ukfast.co.uk/sites/documentfoundation.org/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (gb, prio 100)</li>
+  <li><a href="https://mirror.netone.nl/other/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.netone.nl/other/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (nl, prio 75)</li>
+  <li><a href="https://mirror.2degrees.nz/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.2degrees.nz/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (nz, prio 100)</li>
+  <li><a href="https://tdf.bio.lmu.de/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://tdf.bio.lmu.de/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (de, prio 30)</li>
+  <li><a href="https://mirror.usi.edu/pub/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.usi.edu/pub/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (us, prio 100)</li>
+  <li><a href="https://mirror.uepg.br/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.uepg.br/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (br, prio 100)</li>
+  <li><a href="https://mirrors.komogoto.com/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirrors.komogoto.com/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (fr, prio 100)</li>
+  <li><a href="https://repo.c48.uk/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://repo.c48.uk/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (gb, prio 100)</li>
+  <li><a href="https://ftp.bme.hu/pub/mirrors/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://ftp.bme.hu/pub/mirrors/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (hu, prio 100)</li>
+  <li><a href="https://ftp.cc.uoc.gr/mirrors/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://ftp.cc.uoc.gr/mirrors/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (gr, prio 100)</li>
+  <li><a href="https://ftp.nluug.nl/office/libreoffice/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://ftp.nluug.nl/office/libreoffice/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (nl, prio 100)</li>
+  <li><a href="https://fosszone.csd.auth.gr/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://fosszone.csd.auth.gr/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (gr, prio 100)</li>
+  <li><a href="https://mirrors.atlas.net.co/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirrors.atlas.net.co/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (co, prio 100)</li>
+  <li><a href="https://distrohub.kyiv.ua/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://distrohub.kyiv.ua/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (ua, prio 100)</li>
+  <li><a href="https://mirror.radishnetworks.net/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.radishnetworks.net/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (ca, prio 100)</li>
+  <li><a href="https://mirror1.cs-georgetown.net/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror1.cs-georgetown.net/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (us, prio 100)</li>
+  <li><a href="https://mirror.init7.net/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.init7.net/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (ch, prio 100)</li>
+  <li><a href="https://mirror.netcologne.de/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.netcologne.de/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (de, prio 100)</li>
+  <li><a href="https://mirror.faigner.de/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://mirror.faigner.de/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (de, prio 100)</li>
+  <li><a href="https://ftp.wayne.edu/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz">https://ftp.wayne.edu/tdf/libreoffice/stable/26.8.1/deb/x86_64/LibreOffice_26.8.1_Linux_x86-64_deb.tar.gz</a> (us, prio 40)</li>
+</ul>
+</div>
+
+</div>
+<address>Powered by <a href="http://mirrorbrain.org/">MirrorBrain</a></address>
+</div><!-- mirrorbrain-details -->
+</body>
+</html>

@@ -1,0 +1,7 @@
+# Sidecar binaries (nidm-engine / nidm-ext-host) are staged by CI before
+# `tauri build --bundles msi --config tauri.bundle.sidecars.json`.
+# They are not committed. Regular `cargo build` must not require them.
+#
+# Install/uninstall must never write system proxy or browser policy keys.
+# Native messaging host registration is HKCU-only and happens at runtime
+# via the engine `host_register` op — not via WiX custom actions.

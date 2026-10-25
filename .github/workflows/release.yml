@@ -1,0 +1,96 @@
+name: Release
+
+# 发布更新：push v* tag 或手动触发。
+# 私钥只来自 Environment `release` 的 secret，不写进仓库。
+on:
+  workflow_dispatch:
+    inputs:
+      notes:
+        description: Release notes
+        required: false
+        default: ""
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build & Publish
+    runs-on: windows-latest
+    environment: release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install stable Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Rust
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: .
+          prefix-key: aidm-release
+
+      - name: Install Tauri CLI
+        run: npm install -g @tauri-apps/cli@2
+
+      - name: Build release binaries
+        run: cargo build --workspace --locked --release
+
+      - name: Stage sidecar binaries
+        shell: pwsh
+        run: |
+          $triple = (rustc -vV | Select-String '^host:').ToString().Split(' ')[1]
+          Copy-Item "target/release/aidm-engine.exe" "crates/aidm-ui/sidecars/aidm-engine-$triple.exe" -Force
+          Copy-Item "target/release/aidm-ext-host.exe" "crates/aidm-ui/sidecars/aidm-ext-host-$triple.exe" -Force
+
+      - name: Bundle NSIS
+        working-directory: crates/aidm-ui
+        shell: pwsh
+        run: tauri build --bundles nsis --ci --config tauri.bundle.sidecars.json
+
+      - name: Sign manifest and publish release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          NOTES: ${{ inputs.notes }}
+        run: |
+          $ErrorActionPreference = "Stop"
+          $version = (Select-String -Path Cargo.toml -Pattern '^version = "(.+)"' |
+            Select-Object -First 1).Matches[0].Groups[1].Value
+          $tauri = (Get-Content "crates/aidm-ui/tauri.conf.json" -Raw -Encoding UTF8 |
+            ConvertFrom-Json).version
+          if ($tauri -ne $version) { throw "version mismatch: Cargo=$version tauri=$tauri" }
+
+          $setup = "target/release/bundle/nsis/AIDM_${version}_x64-setup.exe"
+          if (-not (Test-Path $setup)) { throw "missing $setup" }
+
+          $sha = (Get-FileHash $setup -Algorithm SHA256).Hash.ToLowerInvariant()
+          $url = "https://github.com/${{ github.repository }}/releases/download/v$version/AIDM_${version}_x64-setup.exe"
+          $payload = "$version`n$url`n$sha"
+          [IO.File]::WriteAllText("payload.txt", $payload, (New-Object Text.UTF8Encoding($false)))
+
+          cargo tauri signer sign -p "" payload.txt
+          $signature = [IO.File]::ReadAllText("payload.txt.sig").Trim()
+
+          $manifest = [ordered]@{
+            version   = $version
+            url       = $url
+            sha256    = $sha
+            signature = $signature
+            notes     = "$env:NOTES"
+          }
+          $manifest | ConvertTo-Json -Depth 5 |
+            Out-File -FilePath "version-stable.json" -Encoding utf8
+
+          $existing = gh release view "v$version" 2>$null
+          if ($LASTEXITCODE -eq 0) {
+            gh release upload "v$version" $setup version-stable.json --clobber
+          } else {
+            gh release create "v$version" $setup version-stable.json `
+              --title "AIDM $version" --notes "$env:NOTES"
+          }

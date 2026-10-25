@@ -1,0 +1,65 @@
+[package]
+name = "aidm-engine"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+keywords = ["download-manager", "bittorrent", "ed2k", "http-download", "segmented-download"]
+categories = ["network-programming", "command-line-utilities", "asynchronous"]
+description = "AIDM download engine process: segmented downloader + loopback IPC (M3)"
+
+[dependencies]
+aidm-core = { path = "../aidm-core" }
+aidm-ipc = { path = "../aidm-ipc" }
+rusqlite.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+log.workspace = true
+# 阶段埋点用 tracing 事件/span（docs/download-observability.md §3）；日志装配在 aidm-core::obs。
+tracing.workspace = true
+dirs.workspace = true
+# 与 aidm-core 一致：SHA-256 走 ring（SHA-NI 汇编），不用 sha2 的 `asm` feature
+# （那个需要 GAS 汇编器，MSVC 下构建失败）。ring 本来就随 rustls 进来了。
+ring = "0.17"
+# 更新清单签名验证（minisign/Ed25519，零依赖）；公钥见 update.rs 的 UPDATE_PUBKEY。
+minisign-verify = "0.3"
+# Tauri 的 `.sig` 文件是整段 base64（解码后才是 minisign 文本）。
+base64 = "0.22"
+ureq = { version = "2", default-features = false, features = ["tls", "socks-proxy"] }
+# fastdl：自带 HTTP/1.1 + 目标文件定位写 + 动态再分段。
+# 下面三个与既有 `ureq` 共用同一套传递依赖（本地 registry 已缓存，可离线构建）。
+socket2 = "0.6"
+rustls = { version = "0.23", default-features = false, features = ["ring", "std", "tls12", "logging"] }
+webpki-roots = "1"
+flate2 = "1"
+# 原生 SHub 元数据协议的线路兼容；不加载外部 SDK。
+aes = "0.8"
+md5 = "0.7"
+librqbit = { version = "9.0.1", default-features = false, features = ["rust-tls"] }
+# 独立 Mainline DHT 客户端（MIT，BEP-5 get_peers）：librqbit 自带的 DHT 只从
+# 会话内部喂 peer，拿不到"这次要什么 infohash"，也没有"只查不 announce"的入口。
+# 这里只借它的 KRPC 实现做一次短命探测，`initial_peers` 交给 librqbit 传输。
+mainline = { version = "8.0.1", default-features = false, features = ["async"] }
+# `AsyncDht::get_peers` 返回 `futures_lite::Stream`，取元素要 `StreamExt`。
+futures-lite = { version = "2.6", default-features = false }
+tokio = { version = "1", features = ["fs", "io-util", "rt-multi-thread", "time"] }
+quinn = "0.11.12"
+url = "2.5.8"
+
+[target.'cfg(windows)'.dependencies]
+# `FSCTL_SET_SPARSE`：预分配的目标文件必须标记为稀疏，否则 NTFS 会把
+# "写入超出有效数据长度（VDL）的偏移"变成一次物理填零。实测同一文件 4 GiB 处
+# 首次写：未标记 **1997.5 ms**、标记后 **0.2 ms**（见 `fastdl::wpool::set_sparse`）。
+windows-sys = { version = "0.59", features = [
+    "Win32_Foundation",
+    "Win32_System_IO",
+] }
+
+[dev-dependencies]
+rcgen = "0.14.10"
+# 集成测试的工作目录一律用 `tempfile::tempdir()`：绝对路径 + Drop 自动清理，
+# 不再往 %TEMP% 里留 `aidm-m2-*` 垃圾目录。
+tempfile = "3"

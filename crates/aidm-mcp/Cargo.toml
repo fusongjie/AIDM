@@ -1,0 +1,23 @@
+[package]
+name = "aidm-mcp"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+homepage.workspace = true
+keywords = ["mcp", "model-context-protocol", "download-manager", "json-rpc", "stdio"]
+categories = ["command-line-utilities", "network-programming"]
+description = "AIDM MCP server: translates MCP tool calls into the existing EngineRequest IPC contract"
+
+[[bin]]
+name = "aidm-mcp"
+path = "src/main.rs"
+
+[dependencies]
+# 进程边界：只允许契约层与纯逻辑层，禁止依赖 aidm-engine（见 14-mcp-service.md R-MCPS-03）。
+aidm-core = { path = "../aidm-core" }
+aidm-ipc = { path = "../aidm-ipc" }
+serde.workspace = true
+serde_json.workspace = true

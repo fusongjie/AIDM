@@ -1,0 +1,58 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/aidm-core",
+    "crates/aidm-ipc",
+    "crates/aidm-engine",
+    "crates/aidm-ext-host",
+    "crates/aidm-mcp",
+    "crates/aidm-ui",
+]
+
+[workspace.package]
+version = "1.0.0"
+edition = "2021"
+rust-version = "1.85"
+authors = ["小熊宋 <a609962152@gmail.com>"]
+license = "Apache-2.0"
+repository = "https://github.com/fusongjie/AIDM"
+homepage = "https://github.com/fusongjie/AIDM"
+
+[workspace.dependencies]
+rusqlite = { version = "0.32", features = ["bundled"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+log = "0.4"
+# 结构化日志：`tracing` 产出带字段的事件，`tracing-subscriber` 负责 JSON 行输出、
+# 级别过滤与落盘（见 docs/download-observability.md §3）。旧 `log` 宏经 tracing 的
+# `LogTracer` 桥接，迁移期两条通路都能用。
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", default-features = false, features = [
+    "std",
+    "fmt",
+    "env-filter",
+    "registry",
+    "tracing-log",
+] }
+# 迁移期桥接：既有的 `log::info!` 调用点直接进同一结构化通路，不必一次改完。
+tracing-log = "0.2"
+# 类型化错误 + `#[source]` 原因链（§5）。旧字符串机器码保留为兼容层。
+thiserror = "1"
+# MPEG-DASH 的 MPD 解析。**只用于 XML**：HLS 的 m3u8 是纯文本，手写更小（见
+# `aidm-core/src/hls.rs`）；而 MPD 有嵌套、命名空间与属性转义，手写解析器会成为
+# 长期维护负担 —— XML 的正确解析不该自己写。
+quick-xml = "0.42"
+dirs = "5"
+anyhow = "1"
+tauri = { version = "2", features = ["tray-icon"] }
+tauri-build = { version = "2", features = [] }
+
+[profile.release]
+strip = true
+lto = "thin"
+
+# DHT 存活修复的上游补丁尚未发版（crates.io 仍是 9.0.1）。见 `vendor/README.md`：
+# 未打补丁时，Windows 上一个陌生节点的 ICMP 回复就会让 DHT worker 永久退出，
+# 无 tracker 的磁力链因此永远拿不到 peer。
+[patch.crates-io]
+librqbit-dht = { path = "vendor/librqbit-dht" }

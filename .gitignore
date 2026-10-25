@@ -1,0 +1,81 @@
+# ============================================================
+# AIDM 仓库上传边界
+# 只上传：代码 + 配置 + 项目介绍（README.md）
+# 不上传：指导文档 / VI 视觉设计 / 打包脚本 / 构建产物
+# ============================================================
+
+# ---- 构建产物 ----
+target/
+target-check/
+**/target/
+**/target-check/
+dist/
+crates/aidm-ui/gen/
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.rlib
+*.pyc
+__pycache__/
+
+# 打包产物（本地生成）
+aidm-extension.zip
+crates/aidm-ui/sidecars/*.exe
+bundle/
+*.msi
+
+# 本机构建配置（releases 路径等，机器相关）
+.cargo/
+
+# ---- 运行态与数据库 ----
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+engine.port
+engine.lock
+*.aidm.merge
+
+# ---- 日志 ----
+*.log
+logs/
+
+# ---- 临时 / 备份 ----
+*.tmp
+*.bak
+*.orig
+*.rej
+
+# ---- 本机配置与密钥 ----
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+secrets.json
+
+# ---- 编辑器与系统 ----
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- 大体积证据（REA 等）----
+evidence/
+
+# ---- 指导 / 设计 / 产品文档（只留本机）----
+.bgdp/
+AGENTS.md
+docs/
+05_product_doc/
+AIDM-VI/
+
+# ---- 打包 / 启动脚本（只留本机）----
+scripts/
+start-aidm.bat
+一键启动.bat
+
+# ---- 其余 Markdown 只留本机；仅根目录 README.md 是项目介绍，上传 ----
+*.md
+!/README.md

@@ -1,0 +1,528 @@
+
+<html>
+	<head>
+		<title>Mirrorlist /Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<link href='//cdn.kde.org/aether-devel/bootstrap.css' rel='stylesheet' type='text/css'>
+		
+
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.pie.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/flot.tooltip/0.9.0/jquery.flot.tooltip.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/leaflet.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            
+            var mirrordistchartdata = [
+                { label: 'mirrors.bfsu.edu.cn', data:  100 },
+            ];
+            $.plot('#chart_div', mirrordistchartdata, {
+                series: {
+                    pie: {
+                        show: true,
+                        radius: 1,
+                        label: {
+                            show: true,
+                            radius: 0.75,
+                            formatter: labelFormatter,
+                            threshold: 0.02
+                        },
+                        combine: {
+                            threshold: 0.02 
+                        },
+                    }
+                },
+                legend: {
+                    show: true
+                },
+                grid: {
+                    hoverable: true
+                },
+                tooltip: {
+                    show: true,
+                    content: "%s: %p.2%",
+                    shifts: {
+                        x: 10, y: 0
+                    },
+                    defaultTheme: true
+                }
+            });
+        });
+        function labelFormatter(label, series) {
+            return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + series.percent.toFixed(1) + "%</div>";
+        }
+    </script>
+    <style>
+    .numberboxinmapblue {
+      background:blue; color:white; border:none;
+      text-align:center;
+      font-size: 11px;
+      min-height: 16px; min-width: 16px;
+    }
+    .numberboxinmapblue:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0; height: 0;
+      border: 4px solid transparent;
+      border-top-color: blue;
+      border-bottom: 0;
+      margin-left: -4px; margin-bottom: -4px;
+    }
+    .numberboxinmapgreen {
+      background:green; color:white; border:none;
+      text-align:center;
+      font-size: 11px;
+      min-height: 16px; min-width: 16px;
+    }
+    .numberboxinmapgreen:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0; height: 0;
+      border: 4px solid transparent;
+      border-top-color: green;
+      border-bottom: 0;
+      margin-left: -4px; margin-bottom: -4px;
+    }
+    </style>
+
+	</head>
+	<body>
+		<header class="header">
+			<nav class="navbar">
+				<a class="kde-logo navbar-brand active" href="/"></a>
+				<ul class="navbar-nav mr-auto ml-3">
+					<li class="nav-item"><span class="nav-link">/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz</span></li>
+				</ul>
+			</nav>
+		</header>
+		<div id="wrapper">
+			<div>
+				
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-12 col-md-6">
+          <h3>Client</h3>
+          <div>You are connecting with IP address <i>223.93.7.210</i>, which belongs to autonomous system <i>China Mobile communications corporation (ASN56041)</i>.<br />
+          We believe you are somewhere in <i>China</i> and have selected mirrors based on this.</div>
+      </div>
+  
+      <div class="col-12 col-md-6">
+          <h3>File</h3>
+          <div>The file <b>/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz</b> has a size of 56.0 KB (57348 bytes) and was last modified on Thu, 16 Oct 2025 09:03:14 UTC.</div>
+          <div>
+              <br/>Known hashes:
+              <table class="alt table table-striped">
+                  <tr><td><a href="/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz.md5">MD5</a></td><td style="font-family: monospace; word-break: break-all;">19c627d26d469760cdce04d45afca45d</td></tr>
+                  <tr><td><a href="/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz.sha1">SHA1</a></td><td style="font-family: monospace; word-break: break-all;">001e341753f7bc57aa8167b424787349c9ddc52a</td></tr>
+                  <tr><td><a href="/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz.sha256">SHA256</a></td><td style="font-family: monospace; word-break: break-all;">8e51e6f2df4d3c07253b4e94b55a3e158dc1ef638044a68daca681ee82b0fb5b</td></tr>
+              </table>
+          </div>
+          <br/>
+      </div>
+      <div class="col-12 col-md-6">
+        <div id="map" style="width:100%; height:320;"></div>
+      </div>
+      <div class="col-12 col-md-6">
+        <div id="chart_div" style="width: 100%; height:320;"></div>
+      </div>
+  </div>
+</div>
+
+<script>
+    var map = L.map('map').setView([20,37], 2);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Data &copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>, map rendering <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+    }).addTo(map);
+
+    var mapdata = {
+        "mirrors" : [
+        
+        {
+            "lat" :  39.9288 ,
+            "lon" :  116.3889 ,
+            "nr" :  1 ,
+            "color" : "green"
+        },
+        
+        {
+            "lat" :  37.4386 ,
+            "lon" :  127.1378 ,
+            "nr" :  2 ,
+            "color" : "blue"
+        },
+        
+        {
+            "lat" :  24.8065 ,
+            "lon" :  120.9706 ,
+            "nr" :  3 ,
+            "color" : "blue"
+        },
+        
+        {
+            "lat" :  25.0759 ,
+            "lon" :  121.5516 ,
+            "nr" :  4 ,
+            "color" : "blue"
+        },
+        
+        {
+            "lat" :  36 ,
+            "lon" :  138 ,
+            "nr" :  5 ,
+            "color" : "blue"
+        },
+        
+        {
+            "lat" :  54.2833 ,
+            "lon" :  85.9333 ,
+            "nr" :  6 ,
+            "color" : "blue"
+        },
+        
+        {
+            "lat" :  1.2897 ,
+            "lon" :  103.8501 ,
+            "nr" :  7 ,
+            "color" : "blue"
+        },
+        
+        {
+            "lat" :  55.7522 ,
+            "lon" :  37.6156 ,
+            "nr" :  8 ,
+            "color" : "blue"
+        },
+        
+        {
+            "lat" :  63.5624 ,
+            "lon" :  23.6831 ,
+            "nr" :  9 ,
+            "color" : "blue"
+        },
+        
+        {
+            "lat" :  49 ,
+            "lon" :  32 ,
+            "nr" :  10 ,
+            "color" : "blue"
+        },
+        
+        {
+            "lat" :  59 ,
+            "lon" :  26 ,
+            "nr" :  11 ,
+            "color" : "blue"
+        },
+        
+        {
+            "lat" :  60.2673 ,
+            "lon" :  25.0532 ,
+            "nr" :  12 ,
+            "color" : "blue"
+        },
+        
+        {
+            "lat" :  62 ,
+            "lon" :  15 ,
+            "nr" :  13 ,
+            "color" : "blue"
+        },
+        
+        {
+            "lat" :  52 ,
+            "lon" :  20 ,
+            "nr" :  14 ,
+            "color" : "blue"
+        },
+        
+        {
+            "lat" :  43 ,
+            "lon" :  25 ,
+            "nr" :  15 ,
+            "color" : "blue"
+        },
+        
+        {
+            "lat" :  42.696 ,
+            "lon" :  23.332 ,
+            "nr" :  16 ,
+            "color" : "blue"
+        },
+        
+        {
+            "lat" :  42.696 ,
+            "lon" :  23.332 ,
+            "nr" :  17 ,
+            "color" : "blue"
+        },
+        
+        {
+            "lat" :  56 ,
+            "lon" :  10 ,
+            "nr" :  18 ,
+            "color" : "blue"
+        },
+        
+        {
+            "lat" :  49.75 ,
+            "lon" :  15.5 ,
+            "nr" :  19 ,
+            "color" : "blue"
+        },
+        
+        ],
+        "clientpos" : {
+            
+            "lat" :  34.7732 ,
+            "lon" :  113.722 
+            
+        }
+    };
+    var latlngbounds = new L.latLngBounds(); 
+    if ((mapdata.clientpos.lat != 0.0) || (mapdata.clientpos.lon != 0.0)) {
+        var nxtmarker = new L.marker([mapdata.clientpos.lat, mapdata.clientpos.lon]);
+        nxtmarker.addTo(map);
+        latlngbounds.extend([mapdata.clientpos.lat, mapdata.clientpos.lon]);
+        if (mapdata.mirrors.length > 0) {
+            var polyline = L.polyline( [
+                                         [ mapdata.clientpos.lat, mapdata.clientpos.lon ],
+                                         [ mapdata.mirrors[0].lat, mapdata.mirrors[0].lon ]
+                                       ],
+                                       {color: 'blue', opacity: 0.6});
+            polyline.addTo(map);
+            
+        }
+    }
+    var showaftercutoff = 3; 
+    for (i in mapdata.mirrors) {
+        var myIcon = L.divIcon({
+            className: 'numberboxinmap' + mapdata.mirrors[i].color,
+            html: "" + mapdata.mirrors[i].nr,
+            iconSize: null,
+            iconAnchor: [8, 20]
+        });
+        var nxtmarker = new L.marker([mapdata.mirrors[i].lat, mapdata.mirrors[i].lon], {icon: myIcon});
+        nxtmarker.addTo(map);
+        if (mapdata.mirrors[i].color != "green") {
+            showaftercutoff--;
+        }
+        if (showaftercutoff > 0) {
+            latlngbounds.extend([mapdata.mirrors[i].lat, mapdata.mirrors[i].lon]);
+        }
+    }
+    latlngbounds.pad(1);
+    map.fitBounds(latlngbounds);
+
+</script>
+
+<div class="container">
+    <br/>
+    <h3>Mirrors</h3>
+
+    
+
+    
+    <table border="0" cellpadding="2" class="table table-striped">
+    <thead><tr>
+        <th style="width: 3%;">Rank</th><th style="width: 20%;">Mirror Name</th><th style="text-align: right;">URL</th><th style="text-align: center; width: 10%;">Country</th><th style="text-align: center;">Continent</th><th style="text-align: right;">Distance</th><th style="text-align: center;">Selection</th>
+    </tr></thead>
+    <tbody>
+    
+    <tr>
+        <td style="text-align: right;">1.</td><td>mirrors.bfsu.edu.cn</td><td style="text-align: right;"><a href="https://mirrors.bfsu.edu.cn/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirrors.bfsu.edu.cn/kde/</a></td><td style="text-align: center;">CN</td><td style="text-align: center;">AS</td><td style="text-align: right;">620 Km</td><td style="text-align: center;">100%</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">2.</td><td>Advanced Institute of Science and Technology</td><td style="text-align: right;"><a href="https://ftp.kaist.ac.kr/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://ftp.kaist.ac.kr/kde/</a></td><td style="text-align: center;">KR</td><td style="text-align: center;">AS</td><td style="text-align: right;">1240 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">3.</td><td>Department of Computer Science, National Yang Ming Chiao Tung University</td><td style="text-align: right;"><a href="https://kde.cs.nycu.edu.tw/ftp/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://kde.cs.nycu.edu.tw/ftp/</a></td><td style="text-align: center;">TW</td><td style="text-align: center;">AS</td><td style="text-align: right;">1310 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">4.</td><td>Taiwan Digital Streaming Co.</td><td style="text-align: right;"><a href="https://mirror.twds.com.tw/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirror.twds.com.tw/kde/</a></td><td style="text-align: center;">TW</td><td style="text-align: center;">AS</td><td style="text-align: right;">1315 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">5.</td><td>mirrors.xtom.jp</td><td style="text-align: right;"><a href="https://mirrors.xtom.jp/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirrors.xtom.jp/kde/</a></td><td style="text-align: center;">JP</td><td style="text-align: center;">AS</td><td style="text-align: right;">2199 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">6.</td><td>mirror.truenetwork.ru</td><td style="text-align: right;"><a href="https://mirror.truenetwork.ru/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirror.truenetwork.ru/kde/</a></td><td style="text-align: center;">RU</td><td style="text-align: center;">EU</td><td style="text-align: right;">3054 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">7.</td><td>Freedif.org</td><td style="text-align: right;"><a href="https://mirror.freedif.org/KDE/ftp/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirror.freedif.org/KDE/ftp/</a></td><td style="text-align: center;">SG</td><td style="text-align: center;">AS</td><td style="text-align: right;">3861 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">8.</td><td>Yandex</td><td style="text-align: right;"><a href="https://mirror.yandex.ru/mirrors/ftp.kde.org/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirror.yandex.ru/mirrors/ftp.kde.org/</a></td><td style="text-align: center;">RU</td><td style="text-align: center;">EU</td><td style="text-align: right;">6047 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">9.</td><td>mirror.5i.fi</td><td style="text-align: right;"><a href="https://mirror.5i.fi/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirror.5i.fi/kde/</a></td><td style="text-align: center;">FI</td><td style="text-align: center;">EU</td><td style="text-align: right;">6595 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">10.</td><td>Omnilance Cloud Technologies</td><td style="text-align: right;"><a href="https://kde.mirrors.omnilance.com/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://kde.mirrors.omnilance.com/</a></td><td style="text-align: center;">UA</td><td style="text-align: center;">EU</td><td style="text-align: right;">6613 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">11.</td><td>mirrors.xtom.ee</td><td style="text-align: right;"><a href="https://mirrors.xtom.ee/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirrors.xtom.ee/kde/</a></td><td style="text-align: center;">EE</td><td style="text-align: center;">EU</td><td style="text-align: right;">6630 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">12.</td><td>Funet</td><td style="text-align: right;"><a href="https://ftp.funet.fi/pub/mirrors/ftp.kde.org/pub/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://ftp.funet.fi/pub/mirrors/ftp.kde.org/pub/kde/</a></td><td style="text-align: center;">FI</td><td style="text-align: center;">EU</td><td style="text-align: right;">6637 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">13.</td><td>Academic Computer Club in Umeå, Sweden</td><td style="text-align: right;"><a href="https://mirror.accum.se/mirror/kde.org/ftp/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirror.accum.se/mirror/kde.org/ftp/</a></td><td style="text-align: center;">SE</td><td style="text-align: center;">EU</td><td style="text-align: right;">7069 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">14.</td><td>ICM UW</td><td style="text-align: right;"><a href="https://ftp.icm.edu.pl/pub/unix/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://ftp.icm.edu.pl/pub/unix/kde/</a></td><td style="text-align: center;">PL</td><td style="text-align: center;">EU</td><td style="text-align: right;">7270 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">15.</td><td>NetIX</td><td style="text-align: right;"><a href="https://mirrors.netix.net/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirrors.netix.net/kde/</a></td><td style="text-align: center;">BG</td><td style="text-align: center;">EU</td><td style="text-align: right;">7369 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">16.</td><td>Neterra Telecommunications</td><td style="text-align: right;"><a href="https://mirrors.neterra.net/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirrors.neterra.net/kde/</a></td><td style="text-align: center;">BG</td><td style="text-align: center;">EU</td><td style="text-align: right;">7506 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">17.</td><td>mirror.telepoint.bg</td><td style="text-align: right;"><a href="https://mirror.telepoint.bg/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirror.telepoint.bg/kde/</a></td><td style="text-align: center;">BG</td><td style="text-align: center;">EU</td><td style="text-align: right;">7506 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">18.</td><td>Dotsrc.org</td><td style="text-align: right;"><a href="https://mirrors.dotsrc.org/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirrors.dotsrc.org/kde/</a></td><td style="text-align: center;">DK</td><td style="text-align: center;">EU</td><td style="text-align: right;">7635 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">19.</td><td>Karneval</td><td style="text-align: right;"><a href="https://mirror.karneval.cz/pub/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirror.karneval.cz/pub/kde/</a></td><td style="text-align: center;">CZ</td><td style="text-align: center;">EU</td><td style="text-align: right;">7665 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">20.</td><td>University of Crete / Computer Center</td><td style="text-align: right;"><a href="https://ftp.cc.uoc.gr/mirrors/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://ftp.cc.uoc.gr/mirrors/kde/</a></td><td style="text-align: center;">GR</td><td style="text-align: center;">EU</td><td style="text-align: right;">7799 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">21.</td><td>GWDG</td><td style="text-align: right;"><a href="https://ftp.gwdg.de/pub/linux/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://ftp.gwdg.de/pub/linux/kde/</a></td><td style="text-align: center;">DE</td><td style="text-align: center;">EU</td><td style="text-align: right;">7871 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">22.</td><td>mirrors.xtom.de</td><td style="text-align: right;"><a href="https://mirrors.xtom.de/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirrors.xtom.de/kde/</a></td><td style="text-align: center;">DE</td><td style="text-align: center;">EU</td><td style="text-align: right;">8102 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">23.</td><td>Florian Aigner</td><td style="text-align: right;"><a href="https://mirror.faigner.de/kde/ftp/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirror.faigner.de/kde/ftp/</a></td><td style="text-align: center;">DE</td><td style="text-align: center;">EU</td><td style="text-align: right;">8113 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">24.</td><td>SURFnet</td><td style="text-align: right;"><a href="https://ftp.SURFnet.nl/windowing/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://ftp.SURFnet.nl/windowing/kde/</a></td><td style="text-align: center;">NL</td><td style="text-align: center;">EU</td><td style="text-align: right;">8133 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">25.</td><td>NLUUG</td><td style="text-align: right;"><a href="https://ftp.nluug.nl/pub/windowing/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://ftp.nluug.nl/pub/windowing/kde/</a></td><td style="text-align: center;">NL</td><td style="text-align: center;">EU</td><td style="text-align: right;">8133 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">26.</td><td>mirrors.xtom.nl</td><td style="text-align: right;"><a href="https://mirrors.xtom.nl/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirrors.xtom.nl/kde/</a></td><td style="text-align: center;">NL</td><td style="text-align: center;">EU</td><td style="text-align: right;">8146 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">27.</td><td>mirror.gofoss.xyz</td><td style="text-align: right;"><a href="https://mirror.gofoss.xyz/kde-ftp/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirror.gofoss.xyz/kde-ftp/</a></td><td style="text-align: center;">CH</td><td style="text-align: center;">EU</td><td style="text-align: right;">8244 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">28.</td><td>UK Mirror Service</td><td style="text-align: right;"><a href="https://www.mirrorservice.org/sites/download.kde.org/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://www.mirrorservice.org/sites/download.kde.org/</a></td><td style="text-align: center;">GB</td><td style="text-align: center;">EU</td><td style="text-align: right;">8385 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">29.</td><td>Ircam</td><td style="text-align: right;"><a href="https://mirrors.ircam.fr/pub/KDE/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirrors.ircam.fr/pub/KDE/</a></td><td style="text-align: center;">FR</td><td style="text-align: center;">EU</td><td style="text-align: right;">8518 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">30.</td><td>rpmfind</td><td style="text-align: right;"><a href="https://fr2.rpmfind.net/linux/KDE/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://fr2.rpmfind.net/linux/KDE/</a></td><td style="text-align: center;">FR</td><td style="text-align: center;">EU</td><td style="text-align: right;">8532 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">31.</td><td>mirrors.xtom.au</td><td style="text-align: right;"><a href="https://mirrors.xtom.au/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirrors.xtom.au/kde/</a></td><td style="text-align: center;">AU</td><td style="text-align: center;">OC</td><td style="text-align: right;">8572 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">32.</td><td>Open Computing Facility - University of California Berkeley</td><td style="text-align: right;"><a href="https://mirrors.ocf.berkeley.edu/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirrors.ocf.berkeley.edu/kde/</a></td><td style="text-align: center;">US</td><td style="text-align: center;">NA</td><td style="text-align: right;">10076 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">33.</td><td>mirror.fcix.net</td><td style="text-align: right;"><a href="https://mirror.fcix.net/kdeftp/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirror.fcix.net/kdeftp/</a></td><td style="text-align: center;">US</td><td style="text-align: center;">NA</td><td style="text-align: right;">10137 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">34.</td><td>mirrors.xtom.com</td><td style="text-align: right;"><a href="https://mirrors.xtom.com/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirrors.xtom.com/kde/</a></td><td style="text-align: center;">US</td><td style="text-align: center;">NA</td><td style="text-align: right;">10154 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">35.</td><td>Waterloo University</td><td style="text-align: right;"><a href="https://mirror.csclub.uwaterloo.ca/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirror.csclub.uwaterloo.ca/kde/</a></td><td style="text-align: center;">CA</td><td style="text-align: center;">NA</td><td style="text-align: right;">11195 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">36.</td><td>MIT</td><td style="text-align: right;"><a href="https://mirrors.mit.edu/kde/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirrors.mit.edu/kde/</a></td><td style="text-align: center;">US</td><td style="text-align: center;">NA</td><td style="text-align: right;">11424 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">37.</td><td>Department of Mathematics, Princeton University</td><td style="text-align: right;"><a href="https://mirror.math.princeton.edu/pub/kde/ftp/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirror.math.princeton.edu/pub/kde/ftp/</a></td><td style="text-align: center;">US</td><td style="text-align: center;">NA</td><td style="text-align: right;">11631 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">38.</td><td>Dimension Data</td><td style="text-align: right;"><a href="https://mirror.as3741.net/mirror/ftp.kde.org/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://mirror.as3741.net/mirror/ftp.kde.org/</a></td><td style="text-align: center;">ZA</td><td style="text-align: center;">AF</td><td style="text-align: right;">11769 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    <tr style="color: grey;">
+        <td style="text-align: right;">39.</td><td>Universidade de São Paulo</td><td style="text-align: right;"><a href="https://linorg.usp.br/kde/downloads/Attic/plasma/6.5.0/aurorae-6.5.0.tar.xz">https://linorg.usp.br/kde/downloads/</a></td><td style="text-align: center;">BR</td><td style="text-align: center;">SA</td><td style="text-align: right;">17032 Km</td><td style="text-align: center;">n/a</td>
+    </tr>
+    
+    </tbody>
+    </table>
+    
+
+    
+    <h3>Excluded Mirrors</h3>
+    <table border="0" cellpadding="2" class="table table-stiped">
+    <thead><tr><th style="width: 23%;">Mirror Name</th><th style="text-align: right;">URL</th><th style="text-align: center; width: 10%;">Country</th><th style="text-align: center;">Continent</th><th style="text-align: right;">Distance</th><th style="text-align: center; width: 20%;">Exclude Reason</th></tr></thead>
+    <tbody>
+    
+        <tr>
+            <td>LyraHosting<td style="text-align: right;"><a href="https://mirror.lyrahosting.com/pub/kde/">https://mirror.lyrahosting.com/pub/kde/</a></td><td style="text-align: center;">NL</td><td style="text-align: center;">EU</td><td style="text-align:right;">8133 Km</td><td style="text-align: center;">Unreachable</td>
+        </tr>
+    
+        <tr>
+            <td>Easyname<td style="text-align: right;"><a href="https://mirror.easyname.at/kde/">https://mirror.easyname.at/kde/</a></td><td style="text-align: center;">AT</td><td style="text-align: center;">EU</td><td style="text-align:right;">7705 Km</td><td style="text-align: center;">Unreachable</td>
+        </tr>
+    
+        <tr>
+            <td>mirrors.xtom.hk<td style="text-align: right;"><a href="https://mirrors.xtom.hk/kde/">https://mirrors.xtom.hk/kde/</a></td><td style="text-align: center;">HK</td><td style="text-align: center;">AS</td><td style="text-align:right;">1403 Km</td><td style="text-align: center;">User&#39;s country restriction</td>
+        </tr>
+    
+    </tbody>
+    </table>
+    
+</div>
+
+			</div>
+			<div id="footer">
+			Mirrorbits v0.6.1-5-g4125599-dirty running on tinami
+			</div>
+		</div>
+	</body>
+</html>
