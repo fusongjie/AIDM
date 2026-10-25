@@ -5475,9 +5475,19 @@ fn ed2k_task(args: &Args, row: &DownloadRow, dir: &Path) -> WorkerEnd {
         return WorkerEnd::Failed(format!("mkdir: {e}"));
     }
     let mut file_name = target_file_name(args, &row.file_name);
-    // 新建 eD2k 任务（不是暂停/续传）遇到同名文件时自动改名，
-    // 不能把已有文件当成“本地已完成”直接跳过下载。
-    if !args.resume {
+    // eD2k 的核心能力是**按内容认文件**：先看同目录下的同名同长文件能否被本链接认领。
+    // 顺序很重要：必须在「同名文件自动改名」之前判定，否则预置的 `name.ext` 会先被改成
+    // `name (1).ext`，哈希校验就永远看不到原文件（表现为明明有正确文件却又下一份）。
+    let original_path = dir.join(&file_name);
+    let local_candidate = if args.resume {
+        false
+    } else {
+        std::fs::metadata(&original_path)
+            .map(|m| link.size > 0 && m.len() == link.size)
+            .unwrap_or(false)
+    };
+    // 只有本地没有可认领的同长文件时，才为避免覆盖而改名。
+    if !args.resume && !local_candidate {
         let unique = aidm_core::filename::unique_file_name(dir, &file_name);
         if unique != file_name {
             {

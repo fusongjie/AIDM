@@ -387,14 +387,21 @@ pub struct AddSpec<'a> {
 /// 新任务文件名在同目录内不能与已有任务或磁盘文件冲突：
 /// `name.ext` -> `name (1).ext` -> `name (2).ext` …
 /// 这样重复下载会创建新名字的新任务，而不是复用/覆盖旧文件。
-fn unique_task_file_name(conn: &Connection, dir: &Path, name: &str) -> String {
+///
+/// `skip_disk_dedupe` 给 eD2k 用：它的语义是“按内容（MD4）认文件”，本地已有同名文件
+/// 必须交给 worker 做整包校验，不能在 add 阶段先改名成 `name (1).ext`。
+fn unique_task_file_name(conn: &Connection, dir: &Path, name: &str, skip_disk_dedupe: bool) -> String {
     let used: HashSet<String> = model::list_downloads(conn)
         .unwrap_or_default()
         .into_iter()
         .filter(|r| Path::new(&r.dir) == dir)
         .map(|r| r.file_name.to_ascii_lowercase())
         .collect();
-    let first = aidm_core::filename::unique_file_name(dir, name);
+    let first = if skip_disk_dedupe {
+        name.to_string()
+    } else {
+        aidm_core::filename::unique_file_name(dir, name)
+    };
     if !used.contains(&first.to_ascii_lowercase()) {
         return first;
     }
@@ -1654,7 +1661,9 @@ impl DownloadManager {
         let placeholder = {
             let base = resolve_filename(filename.as_deref(), None, &url);
             let conn = self.db.lock().unwrap();
-            unique_task_file_name(&conn, &dir, &base)
+            // eD2k 允许同名：命名交给 worker 按哈希认领，不在 add 阶段改成 “name (1)”。
+            let is_ed2k = url.trim_start().to_ascii_lowercase().starts_with("ed2k:");
+            unique_task_file_name(&conn, &dir, &base, is_ed2k)
         };
         let snap = self.settings_snapshot();
         let host = sched::url_host(&url);
