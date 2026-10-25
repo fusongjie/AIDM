@@ -52,6 +52,12 @@ pub fn open_db(path: &Path) -> Result<Connection, OpenError> {
         })?;
     }
     let mut conn = Connection::open(path)?;
+    // 并发写必须等待而不是立刻失败。
+    //
+    // 真实场景：引擎持连接写盘时，UI/CLI/诊断包导出会另开连接读数；WAL 允许
+    // 读写并行，但**写-写**仍会互斥。不给 busy_timeout 时 SQLite 立即返回
+    // `database is locked`，会让一次正常的状态更新/暂停收尾直接失败。
+    conn.busy_timeout(std::time::Duration::from_secs(5))?;
     conn.pragma_update(None, "journal_mode", "WAL")?;
     conn.pragma_update(None, "foreign_keys", "ON")?;
     migrate(&conn)?;
