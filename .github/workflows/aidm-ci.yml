@@ -45,7 +45,10 @@ jobs:
         env:
           # CI 的 2 vCPU runner 上慢速滴灌与并行用例更慢；测试内的等待预算按此放大。
           AIDM_TEST_TIMEOUT_SCALE: "3"
-        run: cargo test --workspace --locked
+        # 4 vCPU runner 默认会并行跑 4 个集成用例（每个又带 server/worker 线程），
+        # 磁盘扫描与慢速网络竞争会把 pause/写盘类用例的响应拖到几十秒。
+        # 限制为 2 后总耗时略增，但时序稳定。
+        run: cargo test --workspace --locked -- --test-threads=2
 
       - name: Extension unit tests
         run: node --test extension/test/logic.test.js

@@ -8587,7 +8587,7 @@ fn worker_ignores_a_persisted_plan_that_does_not_cover_the_file() {
     use aidm_core::download::store;
 
     let server = TestServer::new(Arc::new(|req: &Req| {
-        ranged_mem(&pattern(2 * 1024 * 1024), req, true).slow(64 * 1024, Duration::from_millis(10))
+            ranged_mem(&pattern(2 * 1024 * 1024), req, true).slow(16 * 1024, Duration::from_millis(50))
     }));
     let env = temp_env("c3a_bad_table");
     env.manager
@@ -9477,7 +9477,7 @@ fn cancel_never_leaves_a_final_file_behind() {
 #[test]
 fn resume_failure_quarantines_into_the_save_dir_not_the_work_dir() {
     let server = TestServer::new(Arc::new(|req: &Req| {
-        ranged_mem(&pattern(2 * 1024 * 1024), req, true).slow(64 * 1024, Duration::from_millis(20))
+        ranged_mem(&pattern(2 * 1024 * 1024), req, true).slow(16 * 1024, Duration::from_millis(50))
     }));
     let env = temp_env("p2_resume_quarantine");
     env.manager.settings_set("conn.retry_max", "0").unwrap();
@@ -9492,15 +9492,18 @@ fn resume_failure_quarantines_into_the_save_dir_not_the_work_dir() {
         "应先有真实写入"
     );
     env.manager.pause(id).expect("pause");
+    // CI 的 Windows runner 有 Defender 实时扫描 + 低并行；慢速滴灌写盘时
+    // worker 响应 pause 可能远慢于本地。给足预算，失败时输出实际状态。
     assert!(
-        until(Duration::from_secs(10), || env
+        until(Duration::from_secs(60), || env
             .manager
             .status(id)
             .unwrap()
             .unwrap()
             .state
             == "paused"),
-        "应停在 paused"
+        "应停在 paused：{:?}",
+        env.manager.status(id)
     );
 
     // 续传 + 注入损坏 + 上游哈希：让 resume 路径走一次失败。
