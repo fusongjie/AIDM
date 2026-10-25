@@ -30,6 +30,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Check signing secret
+        shell: pwsh
+        env:
+          KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+        run: |
+          # 没密钥就无法产出客户端能验签的清单，早失败比构建 10 分钟后再失败好。
+          if ([string]::IsNullOrWhiteSpace($env:KEY)) {
+            throw "缺少 TAURI_SIGNING_PRIVATE_KEY。仓库级 secret 或 environment 'release' 下配置私钥全文。"
+          }
+          Write-Host "签名密钥已就绪（长度 $($env:KEY.Length)）"
+
       - name: Install stable Rust
         uses: dtolnay/rust-toolchain@stable
 
@@ -79,7 +90,11 @@ jobs:
           $payload = "$version`n$url`n$sha"
           [IO.File]::WriteAllText("payload.txt", $payload, (New-Object Text.UTF8Encoding($false)))
 
-          cargo tauri signer sign -p "" payload.txt
+          # CI 装的是 npm 的 @tauri-apps/cli（`tauri` 命令），没有 cargo 子命令；
+          # 之前写 `cargo tauri signer` 会报 no such command: tauri。
+          tauri signer sign -p "" payload.txt
+          if ($LASTEXITCODE -ne 0) { throw "signer failed: check TAURI_SIGNING_PRIVATE_KEY" }
+          if (-not (Test-Path payload.txt.sig)) { throw "payload.txt.sig not produced" }
           $signature = [IO.File]::ReadAllText("payload.txt.sig").Trim()
 
           $manifest = [ordered]@{
