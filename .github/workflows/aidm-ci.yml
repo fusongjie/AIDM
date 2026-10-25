@@ -1,7 +1,7 @@
 # AIDM workspace CI (Windows).
 # Tauri UI frontend is static (`crates/aidm-ui/ui`); no Node/npm build.
 # Windows tauri-build needs `crates/aidm-ui/icons/icon.ico` (checked in).
-# 1GiB offline check (`scripts/verify_1gb.sh`) is a local-only script (not uploaded).
+# 1GiB offline check (`scripts/verify_1gb.sh`) is intentionally not run here (local-only, not uploaded).
 # Stress (`--ignored` / `AIDM_STRESS`) is opt-in and not run here.
 name: AIDM CI
 
